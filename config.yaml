@@ -1,0 +1,58 @@
+project:
+  name: "Multimodal Healthcare AI Platform"
+  version: "1.0.0"
+  author: "ESI-SBA PFE"
+
+paths:
+  data:
+    raw:
+      structured:    "data/raw/structured/"
+      fhir:          "data/raw/fhir/"
+      clinical_text: "data/raw/clinical_text/"
+      prescriptions: "data/raw/prescriptions/"
+      medical_images:"data/raw/medical_images/"
+    processed:       "data/processed/"
+    synthetic:       "data/synthetic/"
+  models:            "models/"
+  reports:           "reports/"
+  figures:           "reports/figures/"
+
+preprocessing:
+  missing_value_strategy: "median"   # mean / median / drop / ffill
+  date_format: "%Y-%m-%d"
+  normalize_units: true
+
+anomaly_detection:
+  zscore_threshold: 3.0
+  isolation_forest:
+    contamination: 0.05
+    n_estimators: 100
+    random_state: 42
+  lof:
+    n_neighbors: 20
+    contamination: 0.05
+
+record_linkage:
+  blocking_keys: ["date_of_birth", "gender"]
+  match_threshold: 0.85
+  string_similarity: "jarowinkler"   # jarowinkler / levenshtein
+
+ocr:
+  engine: "tesseract"
+  lang: "eng"
+  psm: 6                             # page segmentation mode
+  preprocess: true                   # apply adaptive threshold before OCR
+
+cnn:
+  dataset: "medical_mnist"
+  img_size: [64, 64]
+  batch_size: 32
+  epochs: 20
+  learning_rate: 0.001
+  train_split: 0.8
+  random_state: 42
+
+dashboard:
+  title: "Healthcare Data Integration Platform"
+  port: 8501
+  theme: "light"

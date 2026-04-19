@@ -1,0 +1,41 @@
+# ── Core ──────────────────────────────────────────────
+numpy>=1.24
+pandas>=2.0
+scipy>=1.11
+
+# ── Data Quality & Anomaly Detection ──────────────────
+scikit-learn>=1.3       # Isolation Forest, LOF, metrics
+pyod>=1.1               # Extended outlier detection toolkit
+
+# ── Record Linkage ────────────────────────────────────
+recordlinkage>=0.15
+
+# ── OCR (Handwritten Prescriptions) ───────────────────
+pytesseract>=0.3.10
+Pillow>=10.0
+opencv-python>=4.8
+
+# ── Medical Image Analysis ────────────────────────────
+tensorflow>=2.13        # CNN training
+keras>=2.13
+matplotlib>=3.7
+seaborn>=0.12
+
+# ── NLP / Clinical Text ───────────────────────────────
+spacy>=3.6
+transformers>=4.30      # Optional: BioBERT for NER
+
+# ── FHIR Data Parsing ─────────────────────────────────
+fhir.resources>=6.5
+
+# ── Dashboard ─────────────────────────────────────────
+streamlit>=1.28
+plotly>=5.17
+streamlit-extras>=0.3
+
+# ── Utilities ─────────────────────────────────────────
+python-dotenv>=1.0
+tqdm>=4.66
+loguru>=0.7
+pyyaml>=6.0
+joblib>=1.3
